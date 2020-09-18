@@ -27,6 +27,7 @@ export default (argv: Array<string>) => {
 
 		const userConfig = loadUserConfig();
 		const cliConfig = loadCliConfig(argv);
+
 		const config = {
 			...DEFAULT_CONFIG,
 			...{ json: false },
@@ -50,7 +51,7 @@ export default (argv: Array<string>) => {
 			writePackageScripts,
 			readPackageScripts,
 		} = userPackageScriptContext(
-			makePackageFilePath(config.packageFile ?? process.cwd())
+			makePackageFilePath(config.packageFile)
 		);
 
 		const scripts = readPackageScripts(config.ignoreScripts);
